@@ -13,3 +13,37 @@ public:
             
     }
 };
+
+1910: Remove all occurences of substring
+class Solution {
+public:
+    string removeOccurrences(string s, string part) {
+        while(s.length() > 0 && s.find(part)<s.length()){
+          
+          s.erase(s.find(part) , part.length());
+        }
+        return s;
+    }
+};
+
+242: valid anagram
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        vector<int>freq(26,0);
+
+        for(char ch:s){
+          freq[ch -'a']++;
+        }
+
+        for(char ch:t){
+            freq[ch - 'a']--;
+        }
+
+       for( int  x:freq){
+        if(x != 0) return false;
+       }
+       return true;
+        
+    }
+};
