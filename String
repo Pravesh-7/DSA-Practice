@@ -88,6 +88,69 @@ public:
         return ans;
     }
 };
+////////////////////////////
+1592: rearrange spaces in a string
+class Solution {
+public:
+    string reorderSpaces(string text) {
+        int n = text.size();
+        int spaces=0;
+        vector<string> words;
+
+        //count spaces
+        for(int i=0; i<text.size(); i++){
+            if(text[i] == ' '){
+                spaces++;
+            }
+        }
+
+        // extract words
+        string word = "";
+        int i=0;
+        while(i < n){
+            
+           while(i < n && text[i] == ' ') i++;
+
+           while(i < n && text[i] != ' '){
+             word += text[i];
+             i++;
+           }
+            
+           if(!word.empty()){
+             words.push_back(word);
+           }
+
+           word = "";
+        }
+
+        if(words.size() == 1){
+            string ans = words[0];
+            while(spaces--){
+                ans += ' ';
+            }
+            return ans;
+        }
+
+        int spaceEach = spaces / (words.size()-1); //no of spaces required after each word
+        int extraSpace = spaces %(words.size()-1);
+
+        string ans = "";
+
+        for(int i=0; i<words.size(); i++){
+            ans += words[i];
+
+            if(i != words.size()-1){
+                for(int j=0; j<spaceEach; j++){
+                  ans += ' ';
+                } 
+            }
+        }
+        while(extraSpace--){
+            ans += ' ';
+        }
+        return ans;
+    }
+};
 
 
 
