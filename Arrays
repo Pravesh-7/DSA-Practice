@@ -31,3 +31,22 @@ class Solution {
         return ans;
     }
 };
+/////////////////
+1572: Matrix diagonal sum
+class Solution {
+public:
+    int diagonalSum(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int digSum = 0;
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<mat[i].size(); j++){
+                if(i == j) digSum += mat[i][j];
+
+                else if(j == n-1-i) digSum += mat[i][j];
+            }
+
+        }
+        return digSum;
+    }
+};
