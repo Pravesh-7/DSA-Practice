@@ -12,7 +12,7 @@ public:
     }
 };
 ////////////////////
-Row sum gfg
+Q:Row sum gfg
 class Solution {
   public:
     vector<int> rowSum(vector<vector<int>>& mat) {
