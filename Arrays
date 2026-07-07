@@ -255,4 +255,26 @@ public:
     }
 };
 
+///////////////////////
+1:Two Sum
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n= nums.size();
+        unordered_map<int,int>m;
+
+       for(int i=0;i<n;i++){
+        int first=nums[i];
+        int second=target-first;
+       
+       //check if compliment(second) element is in map
+        if(m.find(second) != m.end()){
+            return {i,m[second]};
+        }
+         //if compliment is not found then add current element to map
+        m[first] =i;
+       }
+       return{};
+    }
+};
 
