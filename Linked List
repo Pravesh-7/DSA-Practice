@@ -1,0 +1,16 @@
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+       ListNode* prev=NULL;
+       ListNode* curr=head;
+       ListNode* next=NULL;
+
+       while(curr!=NULL){
+         next=curr->next;//update next first to preserve the add of next nodes of ll
+         curr->next=prev;//establish the reverse connection
+         prev=curr;//update prev
+         curr=next;//update curr
+       }
+      return prev; 
+    }
+};
