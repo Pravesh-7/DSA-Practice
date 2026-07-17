@@ -573,7 +573,29 @@ public:
         return maxProfit;
     }
 };
+///////////////////////////
+2149:Rearrange array elements
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        int sz = nums.size();
+        vector<int>ans(sz);
 
+        int p=0, n=1;
+
+        for(int val:nums){
+            if(val > 0){
+             ans[p] = val;
+             p += 2;
+            }
+            if(val < 0){
+                ans[n] = val;
+             n += 2;
+            }
+        }
+        return ans;
+    }
+};
 
 
 
