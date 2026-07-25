@@ -1,0 +1,56 @@
+735: Asteroids collision
+class Solution {
+public:
+    vector<int> asteroidCollision(vector<int>& asteroids) {
+        stack<int> st;
+
+        for (int asteroid : asteroids) {
+
+            // 1. If current asteroid is positive, push it.
+            if (asteroid > 0) {
+                st.push(asteroid);
+            }
+            else {
+                bool survives = true;
+
+                // 2. Current asteroid is negative.
+                // Keep colliding while the top is positive.
+                while (!st.empty() && st.top() > 0) {
+
+                    // Top asteroid is smaller.
+                    if (st.top() < -asteroid) {
+                        st.pop();
+                    }
+
+                    // Both are equal.
+                    else if (st.top() == -asteroid) {
+                        st.pop();
+                        survives = false;
+                        break;
+                    }
+
+                    // Top asteroid is larger.
+                    else {
+                        survives = false;
+                        break;
+                    }
+                }
+
+                // 3. If current asteroid survives all collisions, push it.
+                if (survives) {
+                    st.push(asteroid);
+                }
+            }
+        }
+
+        // Convert stack to vector
+        vector<int> ans(st.size());
+
+        for (int i = st.size() - 1; i >= 0; i--) {
+            ans[i] = st.top();
+            st.pop();
+        }
+
+        return ans;
+    }
+};
